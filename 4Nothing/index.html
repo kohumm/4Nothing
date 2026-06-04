@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Nothing</title>
+    <link rel="stylesheet" href="Fuck.css">
+</head>
+<body>
+    <div class="page-wrapper blur">
+        <!-- Header com Logo e Nome da Empresa -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="https://media.tenor.com/KK4MJz2_YRgAAAAi/cat-spinning.gif" alt="Logo" class="logo">
+                <span class="company-name">4Nothing</span>
+            </div>
+        </header>
+
+        <!-- Fundo com Texto Repetitivo -->
+        <div class="background-text">
+            <p>YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME YOU WASTED YOUR TIME</p>
+        </div>
+
+        <!-- Seção Principal com Vídeo -->
+        <main class="main-container">
+            <div class="video-container">
+                <video id="mainVideo" class="video" playsinline preload="metadata" loop>
+                    <source src="dancing1_480p.mp4" type="video/mp4">
+                </video>
+            </div>
+        </main>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <p>&copy; 2026 Literally 4Nothing. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <div id="pageOverlay" class="page-overlay">
+        <div id="confirmModal" class="modal">
+            <h1>Deseja continuar?</h1>
+            <p>Você tem certeza que quer seguir por este caminho?</p>
+            <div class="modal-buttons">
+                <button id="btnNo" class="btn btn-no">Não</button>
+                <button id="btnYes" class="btn btn-yes">Sim</button>
+            </div>
+        </div>
+
+        <div id="rejectModal" class="modal hidden">
+            <h1>Então vai embora</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJJliCaUF5K7xMGM7y3eYeXvL6BRFvWKEAw&s" alt="Vá embora" class="reject-image">
+            <audio id="rejectAudio" preload="auto" loop>
+                <source src="https://downloads.khinsider.com/game-soundtracks/album/team-fortress-2-fight-songs-the-music-of/06.%2520A%2520Little%2520Heart%2520to%2520Heart.mp3" type="audio/mpeg">
+                Seu navegador não suporta áudio.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('mainVideo');
+        const pageWrapper = document.querySelector('.page-wrapper');
+        const pageOverlay = document.getElementById('pageOverlay');
+        const confirmModal = document.getElementById('confirmModal');
+        const rejectModal = document.getElementById('rejectModal');
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const rejectAudio = document.getElementById('rejectAudio');
+
+        video.muted = false;
+        video.volume = 1.0;
+        rejectAudio.volume = 0.6;
+
+        btnYes.addEventListener('click', () => {
+            pageOverlay.classList.add('hidden');
+            pageWrapper.classList.remove('blur');
+            video.muted = false;
+            video.volume = 1.0;
+            video.currentTime = 0;
+            video.play().catch((error) => {
+                console.warn('Falha ao iniciar vídeo automaticamente:', error);
+            });
+        });
+
+        btnNo.addEventListener('click', () => {
+            confirmModal.classList.add('hidden');
+            rejectModal.classList.remove('hidden');
+            rejectAudio.currentTime = 0;
+            rejectAudio.play().catch((error) => {
+                console.warn('Falha ao reproduzir a trilha sonora:', error);
+            });
+        });
+    </script>
+</body>
+</html>
